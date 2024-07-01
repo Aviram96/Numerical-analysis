@@ -1,5 +1,10 @@
 import numpy as np
-
+"""Functions:
+- is_det(matrix): Checks if the matrix is invertible by calculating its determinant.
+- find_norma(matrix): Calculates the maximum row sum norm of a matrix.
+- Gaussian_inverse(matrix): Computes the inverse of a given square matrix using Gaussian elimination.
+- calc_cond(normA, norm_inverseOf_A): Computes the condition number of a matrix.
+"""
 
 def is_det(matrix):
     # Check if matrix is nXn and its determinant not equal to 0
@@ -26,7 +31,6 @@ def find_norma(matrix):
 
 def gaussian_inverse(matrix):
     # Check if the matrix is invertible
-    #Parameters: example matrix
     is_det(matrix)
     n = matrix.shape[0]
     augmented_matrix = np.hstack((matrix, np.eye(n)))

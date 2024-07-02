@@ -1,27 +1,15 @@
 import numpy as np
-"""Functions:
-- is_invertible(matrix): Checks if the matrix is invertible.
-- find_norma(matrix): Calculates the maximum row sum norm of a matrix.
-- Gaussian_inverse(matrix): Computes the inverse of a given square matrix using Gaussian elimination.
-- calc_cond(normA, norm_inverseOf_A): Computes the condition number of a matrix.
-"""
 
 def is_invertible(matrix):
-    # Check if matrix is nXn and its determinant not equal to 0
+    # Check if matrix is nXn and its determinant
     if matrix.shape[0] != matrix.shape[1]:
         raise ValueError("Input matrix must be square")
     if np.linalg.det(matrix) == 0:
         raise ValueError("Matrix is singular, cannot find its inverse.")
 
 
-def calc_cond(normA,norm_inverseOf_A):
-    #calculates the condition number of 2 matrix
-    condition_number = normA * norm_inverseOf_A
-    return condition_number
-
-
 def find_norma(matrix):
-    #calculates  the norma by the maximum row sum
+    # Calculates the maximum norm of the matrix
     max_norm = 0
     for i in range(len(matrix)):
         temp_norm = 0
@@ -32,7 +20,14 @@ def find_norma(matrix):
     return max_norm
 
 
+def calc_cond(normA,norm_inverseOf_A):
+    #computes the condition number of a 2 matrix
+    condition_number = normA * norm_inverseOf_A
+    return condition_number
+
+
 def gaussian_inverse(matrix):
+    # computes the inverse of a given matrix using Gaussian elimination
     # create a new matrix that describes the matrix with the unit matrix next to it
     n = matrix.shape[0]
     augmented_matrix = np.hstack((matrix, np.eye(n)))
